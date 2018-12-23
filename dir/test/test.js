@@ -1,15 +1,10 @@
 "use strict";
 exports.__esModule = true;
 var Collections = require("../DoublyLinkedList/DoublyLinkedList");
+var HashTable_1 = require("../HashTable/HashTable");
 var myList = new Collections.DoublyLinkedList();
-myList.AddFirst("This should be the middle value!");
-myList.AddLast("This should be the last value!");
-myList.AddFirst("This should be the first value!");
-console.log("List: ");
-console.log(myList);
-console.log("Found: ");
-console.log(myList.Find("This is the middle value!"));
-var myArray = [];
-console.log("List to array: ");
-console.log(myList.CopyToArray(myArray));
+var myHashTable = new HashTable_1.HashTable();
+myHashTable.Add('First Value', 'this is the first stored value');
+console.log(myHashTable);
+myHashTable.Get('First Value');
 //# sourceMappingURL=test.js.map

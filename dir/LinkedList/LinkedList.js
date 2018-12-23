@@ -1,66 +1,63 @@
 "use strict";
 exports.__esModule = true;
-var DoublyLinkedListNode_1 = require("./DoublyLinkedListNode");
-var DoublyLinkedList = (function () {
-    function DoublyLinkedList() {
+var LinkedListNode_1 = require("./LinkedListNode");
+var LinkedList = (function () {
+    function LinkedList() {
         this.Count = 0;
     }
-    DoublyLinkedList.prototype.AddFirst = function (value) {
-        var node = new DoublyLinkedListNode_1.LinkedListNode(value);
+    LinkedList.prototype.AddFirst = function (value) {
+        var node = new LinkedListNode_1.LinkedListNode(value);
         var temp = this.Head;
         this.Head = node;
         this.Head.Next = temp;
-        if (this.Count === 0) {
+        this.Count += 1;
+        if (this.Count === 1) {
             this.Tail = this.Head;
         }
-        else {
-            temp.Prev = this.Head;
-        }
-        this.Count += 1;
     };
-    DoublyLinkedList.prototype.AddLast = function (value) {
-        var node = new DoublyLinkedListNode_1.LinkedListNode(value);
+    LinkedList.prototype.AddLast = function (value) {
+        var node = new LinkedListNode_1.LinkedListNode(value);
         if (this.Count === 0) {
             this.Head = node;
         }
         else {
             this.Tail.Next = node;
-            node.Prev = this.Tail;
         }
         this.Tail = node;
         this.Count += 1;
     };
-    DoublyLinkedList.prototype.RemoveFirst = function () {
+    LinkedList.prototype.RemoveFirst = function () {
         if (this.Count !== 0) {
             this.Head = this.Head.Next;
-            this.Count += 1;
+            this.Count -= 1;
             if (this.Count === 0) {
                 this.Tail = null;
             }
-            else {
-                this.Head.Prev = null;
-            }
         }
     };
-    DoublyLinkedList.prototype.RemoveLast = function () {
+    LinkedList.prototype.RemoveLast = function () {
         if (this.Count !== 0) {
             if (this.Count === 1) {
                 this.Head = null;
                 this.Tail = null;
             }
             else {
-                this.Tail.Prev.Next = null;
-                this.Tail = this.Tail.Prev;
+                var current = this.Head;
+                while (current.Next !== this.Tail) {
+                    current = current.Next;
+                }
+                current.Next = null;
+                this.Tail = current;
             }
             this.Count -= 1;
         }
     };
-    DoublyLinkedList.prototype.Add = function (item) {
+    LinkedList.prototype.Add = function (item) {
         this.AddFirst(item);
     };
-    DoublyLinkedList.prototype.Contains = function (item) {
+    LinkedList.prototype.Contains = function (item) {
         var current = this.Head;
-        while (current != null) {
+        while (current !== null) {
             if (current.Value === item) {
                 return true;
             }
@@ -68,18 +65,13 @@ var DoublyLinkedList = (function () {
         }
         return false;
     };
-    DoublyLinkedList.prototype.Find = function (item) {
+    LinkedList.prototype.update = function () {
         var current = this.Head;
-        while (current != null) {
-            if (current.Value === item) {
-                return current;
-            }
-            current = current.Next;
+        while (current !== null) {
         }
-        return false;
     };
-    DoublyLinkedList.prototype.CopyToArray = function (array, Index) {
-        if (Index === void 0) { Index = -1; }
+    LinkedList.prototype.CopyTo = function (array, Index) {
+        if (Index === void 0) { Index = 0; }
         var arrayIndex = Index;
         var current = this.Head;
         while (current != null) {
@@ -88,18 +80,15 @@ var DoublyLinkedList = (function () {
         }
         return array;
     };
-    DoublyLinkedList.prototype.Remove = function (item) {
+    LinkedList.prototype.Remove = function (item) {
         var previous = null;
         var current = this.Head;
-        while (current != null) {
+        while (current !== null) {
             if (current.Value === item) {
-                if (previous != null) {
+                if (previous !== null) {
                     previous.Next = current.Next;
                     if (current.Next === null) {
                         this.Tail = previous;
-                    }
-                    else {
-                        current.Next.Prev = previous;
                     }
                     this.Count -= 1;
                 }
@@ -113,7 +102,21 @@ var DoublyLinkedList = (function () {
         }
         return false;
     };
-    return DoublyLinkedList;
+    LinkedList.prototype.Find = function () {
+    };
+    LinkedList.prototype.Clear = function () {
+        this.Head = null;
+        this.Tail = null;
+        this.Count = 0;
+    };
+    LinkedList.prototype.Enumerator = function (cb) {
+        var current = this.Head;
+        while (current != null) {
+            cb(current);
+            current = current.Next;
+        }
+    };
+    return LinkedList;
 }());
-exports.DoublyLinkedList = DoublyLinkedList;
-//# sourceMappingURL=DoublyLinkedList.js.map
+exports.LinkedList = LinkedList;
+//# sourceMappingURL=LinkedList.js.map

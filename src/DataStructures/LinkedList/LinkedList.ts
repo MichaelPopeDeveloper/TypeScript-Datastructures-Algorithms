@@ -1,118 +1,100 @@
-// import * as interfaces from '../../@types/DataStructures';
-import { IDoublyLinkedList } from '../../@types/DataStructures';
-import { LinkedListNode } from './DoublyLinkedListNode';
+import { LinkedListNode } from './LinkedListNode';
 
-/***
- * Class implementation for a Doubly Linked List;
- */
-export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
-  public Count: number = 0;
+export class LinkedList<T>
+{
 
   public Head: LinkedListNode<T>;
   public Tail: LinkedListNode<T>;
+  public Count = 0;
 
-  /** Add values */
-  public AddFirst(value: T): void {
+  public AddFirst(value: any): void {
     const node = new LinkedListNode<T>(value);
-
-    // Save the head node so that it is ont lost
     const temp: LinkedListNode<T> = this.Head;
 
-    // Make the head the new added value
     this.Head = node;
 
-    // Attach the head to the rest of the Doubly linked list
     this.Head.Next = temp;
 
-    if (this.Count === 0) {
-      // if the list was empty, the Head and tail should both point to the new node
-      this.Tail = this.Head;
-    } else {
-      temp.Prev = this.Head;
-    }
-
     this.Count += 1;
+
+    if (this.Count === 1) {
+
+      this.Tail = this.Head;
+    }
   }
 
-  // Add a value to the end of the list
   public AddLast(value: T): void {
-    // Store new value in node
-    const node = new LinkedListNode<T>(value);
+    const node = new LinkedListNode(value);
 
     if (this.Count === 0) {
       this.Head = node;
     } else {
       this.Tail.Next = node;
-      node.Prev = this.Tail;
     }
 
     this.Tail = node;
+
     this.Count += 1;
   }
 
-  // Removes the first node from the list
   public RemoveFirst(): void {
+
     if (this.Count !== 0) {
       this.Head = this.Head.Next;
-      this.Count += 1;
+      this.Count -= 1;
 
       if (this.Count === 0) {
         this.Tail = null;
-      } else {
-        this.Head.Prev = null;
       }
     }
   }
 
-  // Removes the last node from the list
-  public RemoveLast() {
+  public RemoveLast(): void {
     if (this.Count !== 0) {
       if (this.Count === 1) {
         this.Head = null;
         this.Tail = null;
       } else {
-        this.Tail.Prev.Next = null;
-        this.Tail = this.Tail.Prev;
+        let current: LinkedListNode<T> = this.Head;
+        while (current.Next !== this.Tail) {
+          current = current.Next;
+        }
+
+        current.Next = null;
+        this.Tail = current;
       }
 
       this.Count -= 1;
     }
   }
 
-  public Add(item: T): void {
+  public Add(item: T) {
     this.AddFirst(item);
   }
 
   public Contains(item: T): boolean {
     let current: LinkedListNode<T> = this.Head;
-    while (current != null) {
+
+    while (current !== null) {
       if (current.Value === item) {
         return true;
       }
 
       current = current.Next;
     }
-
     return false;
   }
 
-  public Find(item: T): any /**TODO: Change this to appropriate union return type */ {
+  public update() {
     let current: LinkedListNode<T> = this.Head;
-    while (current != null) {
-      if (current.Value === item) {
-        return current;
-      }
+    while (current !== null) {
 
-      current = current.Next;
     }
-
-    return false;
   }
 
-  public CopyToArray(array: T[], Index: number = -1): T[] {
+  public CopyTo(array: T[], Index: number = 0): T[] {
     let arrayIndex: number = Index;
     let current: LinkedListNode<T> = this.Head;
-
     while (current != null) {
       array[arrayIndex += 1] = current.Value;
       current = current.Next;
@@ -120,21 +102,17 @@ export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
     return array;
   }
 
-  public Remove(item: T): boolean {
+  public Remove(item: T) {
     let previous: LinkedListNode<T> = null;
     let current: LinkedListNode<T> = this.Head;
 
-    while (current != null) {
-
+    while (current !== null) {
       if (current.Value === item) {
-
-        if (previous != null) {
+        if (previous !== null) {
           previous.Next = current.Next;
 
           if (current.Next === null) {
             this.Tail = previous;
-          } else {
-            current.Next.Prev = previous;
           }
 
           this.Count -= 1;
@@ -152,4 +130,22 @@ export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
     return false;
   }
 
+  // TODO: Finish creating find method
+  public Find() {
+
+  }
+
+  public Clear(): void {
+    this.Head = null;
+    this.Tail = null;
+    this.Count = 0;
+  }
+
+  public Enumerator(cb: Function): any {
+    let current: LinkedListNode<T> = this.Head;
+    while (current != null) {
+      cb(current);
+      current = current.Next;
+    }
+  }
 }
