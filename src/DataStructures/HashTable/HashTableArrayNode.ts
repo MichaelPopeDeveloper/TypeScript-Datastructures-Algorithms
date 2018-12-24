@@ -17,7 +17,7 @@ export class HashTableArrayNode<TKey, TValue>
   }
 
   public Get(key: any) {
-    console.log('HTAN');
+    console.log('HTA');
     console.log(key);
     this._items.Hash_Get(key);
   }

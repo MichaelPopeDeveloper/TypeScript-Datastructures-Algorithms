@@ -12,7 +12,7 @@ var HashTableArrayNode = (function () {
         this._items.Hash_Update(key, value);
     };
     HashTableArrayNode.prototype.Get = function (key) {
-        console.log('HTAN');
+        console.log('HTA');
         console.log(key);
         this._items.Hash_Get(key);
     };

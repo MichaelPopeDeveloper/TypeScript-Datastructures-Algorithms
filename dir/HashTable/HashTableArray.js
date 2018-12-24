@@ -2,22 +2,22 @@
 exports.__esModule = true;
 var HashTableArrayNode_1 = require("./HashTableArrayNode");
 var HashTableArray = (function () {
-    function HashTableArray() {
-        this._HashMap = new Map();
+    function HashTableArray(capacity) {
+        this.Capacity = 0;
+        this.Capacity = capacity;
+        this._array = Array(capacity).fill(null).map(function () { return new HashTableArrayNode_1.HashTableArrayNode(); });
     }
     HashTableArray.prototype.Add = function (key, value) {
-        if (this._HashMap.get(key) === undefined) {
-            this._HashMap.set(key, new HashTableArrayNode_1.HashTableArrayNode());
-        }
-        this._HashMap.get(key).Add(key, value);
+        this._array[this.GetIndex(key)].Add(key, value);
+        console.log('First value');
+        console.log(this._array[this.GetIndex(key)]._items.Head.Value);
+        console.log(this._array[this.GetIndex(key)]._items);
     };
     HashTableArray.prototype.Update = function (key, value) {
-        this._HashMap.get(key).Update(key, value);
+        this._array[this.GetIndex(key)].Update(key, value);
     };
-    HashTableArray.prototype.Get = function (key) {
-        console.log('HTA');
-        console.log(key);
-        this._HashMap.get(key).Get(key);
+    HashTableArray.prototype.GetIndex = function (key) {
+        return (25);
     };
     return HashTableArray;
 }());

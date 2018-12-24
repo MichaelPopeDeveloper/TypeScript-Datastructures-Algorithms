@@ -19,8 +19,8 @@ const myList = new Collections.DoublyLinkedList<any>();
 // const myArray: any[] = [];
 // console.log('List to array: ');
 // console.log(myList.CopyToArray(myArray));
-const myHashTable = new HashTable();
+const myHashTable = new HashTable(26);
 
 myHashTable.Add('First Value', 'this is the first stored value');
+myHashTable.Add('Second Value', 'this is the second stored value');
 console.log(myHashTable);
-myHashTable.Get('First Value');

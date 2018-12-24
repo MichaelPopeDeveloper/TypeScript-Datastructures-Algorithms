@@ -60,6 +60,7 @@ var HashTableLinkedList = (function (_super) {
             }
             current = current.Next;
         }
+        console.log(key);
         throw new Error('The key was not founf in the collection');
     };
     HashTableLinkedList.prototype.Enumerator = function (cb) {

@@ -1,18 +1,19 @@
 import { HashTableArray } from './HashTableArray';
 
 export class HashTable<TKey, TValue> {
-  public _HashTableMap = new HashTableArray();
+  public _array: HashTableArray<TKey, TValue>;
 
-  constructor() {
+  constructor(initialCapacity: number) {
+    if (initialCapacity < 1) {
+      throw new Error('initialCapacity must be larger than 0');
+    }
 
+    this._array = new HashTableArray<TKey, TValue>(initialCapacity);
+
+    // Finish whats here
   }
 
   public Add(key: TKey, value: TValue) {
-    this._HashTableMap.Add(key, value);
-  }
-
-  public Get(key: TKey) {
-    console.log(key);
-    this._HashTableMap.Get(key);
+    this._array.Add(key, value);
   }
 }
