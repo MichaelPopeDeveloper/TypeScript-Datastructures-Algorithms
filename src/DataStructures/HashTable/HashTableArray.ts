@@ -24,6 +24,7 @@ export class HashTableArray<TKey, TValue> {
   }
 
   private GetIndex(key: TKey) {
+    // For test purposes
     return (25);
   }
 }
