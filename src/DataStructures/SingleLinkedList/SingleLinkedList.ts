@@ -125,7 +125,7 @@ export class LinkedList<T> implements ISingleLinkedList<T> {
         return false;
     }
     
-    // Finish this method
+    // TODO: Finish this method
     public Find() 
     {
         
