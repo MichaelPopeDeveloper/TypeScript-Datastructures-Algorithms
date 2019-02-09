@@ -18,7 +18,7 @@ const BubbleSort = (items: number[]) => {
 
 // console.log(BubbleSort([1, 9, 2, 7, 3, 6, 3, 9, 5]/*, 0, 8*/));
 let NumberSet = createDataSet();
-
+// Move to test area
 console.time('Bubble Sort: ');
 BubbleSort(NumberSet);
 console.timeEnd('Bubble Sort: ');

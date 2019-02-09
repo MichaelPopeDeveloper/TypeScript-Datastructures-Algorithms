@@ -1,9 +1,9 @@
-import { ILinkedListNode } from '../../@types/DataStructures';
+import { IDoublyLinkedListNode } from '../../@types/DataStructures';
 
-export class LinkedListNode<T> implements ILinkedListNode<T> {
+export class LinkedListNode<T> implements IDoublyLinkedListNode<T> {
   public Value: T;
-  public Next: ILinkedListNode<T> = null;
-  public Prev: ILinkedListNode<T> = null;
+  public Next: IDoublyLinkedListNode<T> = null;
+  public Prev: IDoublyLinkedListNode<T> = null;
 
   constructor(value: T) {
     this.Value = value;

@@ -15,7 +15,7 @@ export class DoublyLinkedList<T> implements IDoublyLinkedList<T> {
   public AddFirst(value: T): void {
     const node = new LinkedListNode<T>(value);
 
-    // Save the head node so that it is ont lost
+    // Save the head node so that it is not lost
     const temp: LinkedListNode<T> = this.Head;
 
     // Make the head the new added value
