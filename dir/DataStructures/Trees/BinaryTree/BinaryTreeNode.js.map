@@ -1,0 +1,1 @@
+{"version":3,"file":"BinaryTreeNode.js","sourceRoot":"","sources":["../../../../src/DataStructures/Trees/BinaryTree/BinaryTreeNode.ts"],"names":[],"mappings":";;AAAA;IAKI,wBAAY,KAAY;QACpB,IAAI,CAAC,KAAK,GAAG,KAAK,CAAC;IACvB,CAAC;IAEM,kCAAS,GAAhB,UAAiB,KAA4B;QACzC,OAAO,IAAI,CAAC,KAAK,KAAK,KAAK,CAAC,KAAK,CAAC;IACtC,CAAC;IACL,qBAAC;AAAD,CAAC,AAZD,IAYC;AAZY,wCAAc"}

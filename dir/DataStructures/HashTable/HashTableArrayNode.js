@@ -1,20 +1,36 @@
 "use strict";
 exports.__esModule = true;
-var HashTableLinkedList_1 = require("./HashTableLinkedList");
+var SingleLinkedList_1 = require("../SingleLinkedList/SingleLinkedList");
+var HashTableNodePair_1 = require("./HashTableNodePair");
 var HashTableArrayNode = (function () {
     function HashTableArrayNode() {
-        this._items = new HashTableLinkedList_1.HashTableLinkedList();
     }
     HashTableArrayNode.prototype.Add = function (key, value) {
-        this._items.Hash_Add(key, value);
+        if (this._items == null) {
+            this._items = new SingleLinkedList_1.LinkedList();
+        }
+        else {
+        }
+        this._items.AddFirst(new HashTableNodePair_1.HashTableNodePair(key, value));
     };
     HashTableArrayNode.prototype.Update = function (key, value) {
-        this._items.Hash_Update(key, value);
+        var update = false;
+        if (this._items != null) {
+        }
     };
-    HashTableArrayNode.prototype.Get = function (key) {
-        console.log('HTA');
-        console.log(key);
-        this._items.Hash_Get(key);
+    HashTableArrayNode.prototype.Remove = function (key) {
+        var removed = false;
+        if (this._items != null) {
+            var current = this._items.Head;
+            while (current != null) {
+                if (current.Value.Key === key) {
+                    removed = true;
+                    break;
+                }
+                current = current.Next;
+            }
+        }
+        return removed;
     };
     return HashTableArrayNode;
 }());

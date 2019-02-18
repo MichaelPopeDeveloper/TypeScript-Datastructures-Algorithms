@@ -1,4 +1,4 @@
-import { createDataSet } from '../utility/DataSet';
+import { createDataSet } from '../../utility/DataSet';
 
 const mergeSort = (arr: any[]/*, l: number, r: number*/) => {
   const l: number = 0;

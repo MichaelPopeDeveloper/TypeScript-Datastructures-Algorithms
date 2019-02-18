@@ -1,4 +1,4 @@
-import { createDataSet } from '../utility/DataSet';
+import { createDataSet } from '../../utility/DataSet';
 const BubbleSort = (items: number[]) => {
     let swapped: boolean;
 

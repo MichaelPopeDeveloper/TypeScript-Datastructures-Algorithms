@@ -1,0 +1,1 @@
+{"version":3,"file":"linearSearch.js","sourceRoot":"","sources":["../../../src/Algorithms/Searching/linearSearch.ts"],"names":[],"mappings":";;AAAa,QAAA,YAAY,GAAG,UAAC,GAAa,EAAE,CAAS;IACjD,KAAK,IAAI,CAAC,GAAG,CAAC,EAAE,CAAC,GAAG,GAAG,CAAC,MAAM,EAAE,CAAC,EAAE,EAAE;QACjC,IAAI,GAAG,CAAC,CAAC,CAAC,IAAI,CAAC,EAAE;YACb,OAAO,CAAC,CAAC;SACZ;KACJ;IACD,OAAO,CAAC,CAAC,CAAC;AACd,CAAC,CAAA"}

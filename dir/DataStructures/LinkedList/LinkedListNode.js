@@ -2,7 +2,6 @@
 exports.__esModule = true;
 var LinkedListNode = (function () {
     function LinkedListNode(value) {
-        this.Key = null;
         this.Value = value;
     }
     return LinkedListNode;
